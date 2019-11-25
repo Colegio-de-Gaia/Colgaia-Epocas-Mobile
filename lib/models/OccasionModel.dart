@@ -1,21 +1,29 @@
 class Occasion {
-  String _occasionName;
+  String _name;
   DateTime _startAt;
   DateTime _endAt;
   DateTime _createdAt;
   DateTime _updatedAt;
 
-  Occasion(this._occasionName, this._startAt, this._endAt, this._updatedAt,
-      this._createdAt);
+  Occasion(
+      this._name, this._startAt, this._endAt, this._updatedAt, this._createdAt);
 
   Occasion.fromJson(Map<String, dynamic> json)
-      : _occasionName = json['occasioName'],
-        _startAt = json['startAt'],
-        _endAt = json['endAt'],
-        _createdAt = json['createdAt'],
-        _updatedAt = json['updatedAt'];
+      : _name = json['name'],
+        _startAt = json['start_at'] as DateTime,
+        _endAt = json['end_at'] as DateTime,
+        _createdAt = json['created_at'] as DateTime,
+        _updatedAt = json['updated_at'] as DateTime;
 
-  String get occasionName => _occasionName;
+  Map<String, dynamic> toJson() => {
+        'name': _name,
+        'start_at': _startAt,
+        'end_at': _endAt,
+        'created_at': _createdAt,
+        'updated_at': _updatedAt
+      };
+
+  String get occasionName => _name;
   DateTime get startAt => _startAt;
   DateTime get endAt => _endAt;
   DateTime get createdAT => _createdAt;
