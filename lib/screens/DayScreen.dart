@@ -68,7 +68,20 @@ class DayScreen extends StatelessWidget {
             ],
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
+            alignment: Alignment.topLeft,
+            margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
+            child: Text(
+              '"Caiu a chuva, vieram as torrentes, sopraram os ventos... mas aquela casa não caia."',
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 25.0,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
               "Mateus 7, 21.24-27",
               style: TextStyle(
@@ -76,18 +89,7 @@ class DayScreen extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 fontSize: 15.0,
               ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-            child: Text(
-              '" Caiu a chuva, vieram as torrentes, sopraram os ventos... mas aquela casa não caia. "',
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 25.0,
-              ),
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.right,
             ),
           ),
           Container(
@@ -106,12 +108,12 @@ class DayScreen extends StatelessWidget {
             alignment: Alignment.topLeft,
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
-              "A vida está cheia de imprevistos. \nAlguns, bem mais sérios do que uma tempestade ou uma ventania. \nOs amigos falham-nos, \na nossa força de vontade entra em crise, \nperdemos o entusiasmo com o que ontem sonhavamos. E parece que a vida toda de desmorona.",
+              "A vida está cheia de imprevistos. Alguns, bem mais sérios do que uma tempestade ou uma ventania. Os amigos falham-nos, a nossa força de vontade entra em crise, perdemos o entusiasmo com o que ontem sonhavamos. E parece que a vida toda de desmorona.",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 20.0,
               ),
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.justify,
             ),
           ),
           Container(
@@ -130,12 +132,12 @@ class DayScreen extends StatelessWidget {
             alignment: Alignment.topLeft,
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
             child: Text(
-              "Quando construo a minha vida \nem cima da tua Palavra, \nnão há tempestade que me deite abaixo. \nEm Ti, no teu amor sem limites, \nencontro a força e luz \npara superar todos os desânimos.",
+              "Quando construo a minha vida em cima da tua Palavra, não há tempestade que me deite abaixo. \nEm Ti, no teu amor sem limites, encontro a força e luz para superar todos os desânimos.",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 20.0,
               ),
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.justify,
             ),
           ),
         ],
