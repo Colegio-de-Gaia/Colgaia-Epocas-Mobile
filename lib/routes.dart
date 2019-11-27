@@ -2,6 +2,7 @@ import 'package:colgaia_convento/screens/DayScreen.dart';
 import 'package:colgaia_convento/screens/HomeScreen.dart';
 import 'package:colgaia_convento/screens/InfoScreen.dart';
 import 'package:colgaia_convento/screens/SplashScreen.dart';
+import 'package:colgaia_convento/screens/CandleScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 
@@ -20,6 +21,10 @@ class FluroRouter {
   static Handler _infoHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           InfoScreen());
+          static Handler _candleHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          CandleScreen());  
+        
 
   static void setupRouter() {
     router.define(
@@ -37,6 +42,10 @@ class FluroRouter {
     router.define(
       'info',
       handler: _infoHandler,
+    );
+    router.define(
+      'candle',
+      handler: _candleHandler,
     );
   }
 }
