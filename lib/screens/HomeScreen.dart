@@ -33,25 +33,28 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0),
         child: CalendarCarousel(
-            weekFormat: false,
-            weekendTextStyle: TextStyle(
-              color: Colors.black,
-            ),
-            selectedDayButtonColor: Theme.of(context).primaryColor,
-            todayButtonColor: Theme.of(context).accentColor,
-            headerTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 25.0,
-            ),
-            weekdayTextStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
-            ),
-            iconColor: Colors.black,
-            onDayPressed: (DateTime date, List<Event> events) {
-              Navigator.of(context).pushNamed('day');
-            }
-            //onDayPressed: (DateTime day) => Navigator.of(context).pushNamed('info');,
-            ),
+          weekFormat: false,
+          weekendTextStyle: TextStyle(
+            color: Colors.black,
+          ),
+          selectedDayButtonColor: Theme.of(context).primaryColor,
+          todayButtonColor: Theme.of(context).accentColor,
+          headerTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 25.0,
+          ),
+          weekdayTextStyle: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
+          iconColor: Colors.black,
+          onDayPressed: (DateTime date, List<Event> events) {
+            Navigator.of(context).pushNamed('day');
+          },
+          // ? Let's define the bounderies
+          minSelectedDate: DateTime(2019, 12, 1),
+          maxSelectedDate: DateTime(2019, 12, 24),
+          markedDateCustomTextStyle: TextStyle(color: Colors.red),
+        ),
       ),
     );
   }
