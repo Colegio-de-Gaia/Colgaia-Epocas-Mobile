@@ -1,5 +1,7 @@
 import 'package:colgaia_convento/screens/CandleScreen.dart';
+import 'package:colgaia_convento/screens/CreditsScreen.dart';
 import 'package:colgaia_convento/screens/DayScreen.dart';
+import 'package:colgaia_convento/screens/HelpScreen.dart';
 import 'package:colgaia_convento/screens/HomeScreen.dart';
 import 'package:colgaia_convento/screens/InfoScreen.dart';
 import 'package:colgaia_convento/screens/SplashScreen.dart';
@@ -24,6 +26,12 @@ class FluroRouter {
   static Handler _candleHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           CandleScreen());
+  static Handler _creditsHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          CreditsScreen());
+  static Handler _helpHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          HelpScreen());
 
   static void setupRouter() {
     router.define(
@@ -45,6 +53,14 @@ class FluroRouter {
     router.define(
       'candle',
       handler: _candleHandler,
+    );
+    router.define(
+      'credits',
+      handler: _creditsHandler,
+    );
+    router.define(
+      'help',
+      handler: _helpHandler,
     );
   }
 }

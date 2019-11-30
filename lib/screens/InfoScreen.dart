@@ -1,3 +1,4 @@
+import 'package:colgaia_convento/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,9 +17,13 @@ class InfoScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
-        title: Text("Sobre".toUpperCase()),
+        title: Text(
+          "Sobre".toUpperCase(),
+          style: TextStyle(fontWeight: FontWeight.w800),
+        ),
         elevation: 0.0,
       ),
+      drawer: DrawerWidget(),
       body: Center(
         child: Column(
           children: <Widget>[
