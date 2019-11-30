@@ -5,6 +5,7 @@ import 'package:colgaia_convento/screens/HelpScreen.dart';
 import 'package:colgaia_convento/screens/HomeScreen.dart';
 import 'package:colgaia_convento/screens/InfoScreen.dart';
 import 'package:colgaia_convento/screens/SplashScreen.dart';
+import 'package:colgaia_convento/screens/CandleScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 
