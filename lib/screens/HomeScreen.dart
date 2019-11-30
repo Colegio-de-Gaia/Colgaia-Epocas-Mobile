@@ -1,3 +1,4 @@
+import 'package:colgaia_convento/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
@@ -22,14 +23,8 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: Text("Colgaia $ocasiao".toUpperCase()),
         elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.info),
-            color: Colors.white,
-            onPressed: () => Navigator.of(context).pushNamed('info'),
-          )
-        ],
       ),
+      drawer: DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0),
         child: CalendarCarousel(
