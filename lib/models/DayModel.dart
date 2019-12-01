@@ -10,6 +10,18 @@ class Day {
   DateTime _createdAt;
   DateTime _updatedAt;
 
+  Day(
+      this._id,
+      this._date,
+      this._sentence,
+      this._sentenceAuthor,
+      this._pray,
+      this._photoPath,
+      this._photoName,
+      this._occasionID,
+      this._createdAt,
+      this._updatedAt);
+
   Day.fromJson(Map<String, dynamic> json)
       : _id = json['id'],
         _date = json['date'] as DateTime,
@@ -35,7 +47,6 @@ class Day {
         'updated_at': _updatedAt
       };
 
-  // * Getters
   int get id => _id;
   DateTime get date => _date;
   String get sentence => _sentence;
@@ -46,29 +57,4 @@ class Day {
   int get occasionID => _occasionID;
   DateTime get createdAT => _createdAt;
   DateTime get updatedAt => _updatedAt;
-
-  // * Setters
-  set id(int id) => _id = id;
-  set date(DateTime date) => _date = date;
-  set sentence(String sentence) => _sentence = sentence;
-  set sentenceAuthor(String setenceAuthor) => _sentenceAuthor = setenceAuthor;
-  set pray(String pray) => _pray = pray;
-  set photoPath(String photoPath) => _photoPath = photoPath;
-  set photoName(String photoName) => _photoPath = photoName;
-  set occasionID(int occasionID) => _occasionID = occasionID;
-  set createdAt(DateTime createdAt) => _createdAt = createdAt;
-  set updatedAt(DateTime updatedAt) => _updatedAt = updatedAt;
-
-  Day(
-    this._id,
-    this._date,
-    this._sentence,
-    this._sentenceAuthor,
-    this._pray,
-    this._photoPath,
-    this._photoName,
-    this._occasionID,
-    this._createdAt,
-    this._updatedAt,
-  );
 }
