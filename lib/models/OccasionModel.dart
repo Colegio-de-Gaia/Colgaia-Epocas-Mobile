@@ -27,7 +27,7 @@ class Occasion {
       };
 
   int get id => _id;
-  String get occasionName => _name;
+  String get name => _name;
   DateTime get startAt => _startAt;
   DateTime get endAt => _endAt;
   DateTime get createdAT => _createdAt;
