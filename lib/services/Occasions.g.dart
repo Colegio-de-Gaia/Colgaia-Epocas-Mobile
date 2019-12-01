@@ -15,13 +15,13 @@ mixin _$Occasions on OccasionBase, Store {
   Occasion get _occasion {
     _$_occasionAtom.context.enforceReadPolicy(_$_occasionAtom);
     _$_occasionAtom.reportObserved();
-    return super._occasion;
+    return super.occasion;
   }
 
   @override
   set _occasion(Occasion value) {
     _$_occasionAtom.context.conditionallyRunInAction(() {
-      super._occasion = value;
+      super.occasion = value;
       _$_occasionAtom.reportChanged();
     }, _$_occasionAtom, name: '${_$_occasionAtom.name}_set');
   }

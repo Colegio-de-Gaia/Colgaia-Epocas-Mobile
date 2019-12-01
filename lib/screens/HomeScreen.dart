@@ -1,11 +1,40 @@
+import 'dart:convert';
+
+import 'package:colgaia_convento/services/Occasions.dart';
+import 'package:colgaia_convento/services/domain/domain.dart';
 import 'package:colgaia_convento/widgets/Drawer.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:http/http.dart' as http;
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  Occasions _occasions;
+
+  @override
+  void initState() { 
+    super.initState();
+    getOccasion();
+  }
+
+  getOccasion() {
+      var url = BASE_URL + "/api/current/occasion";
+
+      http.get(url, headers: { "Accept": "application/json"}).then((response) => {
+        print(json.decode(response.body)['id'])
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
