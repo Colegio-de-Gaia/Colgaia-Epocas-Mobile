@@ -12,10 +12,10 @@ class Occasion {
   Occasion.fromJson(Map<String, dynamic> json)
       : _id = json['id'],
         _name = json['name'],
-        _startAt = json['start_at'] as DateTime,
-        _endAt = json['end_at'] as DateTime,
-        _createdAt = json['created_at'] as DateTime,
-        _updatedAt = json['updated_at'] as DateTime;
+        _startAt = DateTime.parse(json['start_at']),
+        _endAt = DateTime.parse(json['end_at']),
+        _createdAt = DateTime.parse(json['created_at']),
+        _updatedAt = DateTime.parse(json['updated_at']);
 
   Map<String, dynamic> toJson() => {
         'id': _id,
