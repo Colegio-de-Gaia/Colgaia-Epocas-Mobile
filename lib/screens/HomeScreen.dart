@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    getOccasion().then((newoccasion) => occasion = newoccasion);
+    getOccasion().then((newoccasion) => setState(() => {occasion = newoccasion}));
   }
 
   Future<Occasion> getOccasion() async {
@@ -57,15 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
-        title: Text("Colgaia ${occasion.name}".toUpperCase()),
+        title: occasion != null ? Text(("Colgaia ${occasion.name}").toUpperCase()) : Text(""),
         elevation: 0.0,
       ),
       drawer: DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0),
-        child: Calendar(
+        child: occasion != null ? Calendar(
           occasion: occasion,
-        ),
+        ) : Container(),
       ),
     );
   }
@@ -76,6 +76,10 @@ class Calendar extends StatelessWidget {
 
   Calendar({this.occasion});
 
+
+  @override
+  Widget build(BuildContext context) {
+
   final DateTime _startDate = occasion.startAt;
   final DateTime _endDate = occasion.endAt;
   final DateTime _now = DateTime.now();
@@ -85,8 +89,6 @@ class Calendar extends StatelessWidget {
 
   EventList<Event> _eventList = EventList<Event>(events: {});
 
-  @override
-  Widget build(BuildContext context) {
     for (int i = 0; i <= _now.difference(_startDate).inDays; i++) {
       _active.add(_startDate.add(Duration(days: i)));
     }
