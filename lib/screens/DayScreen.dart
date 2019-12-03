@@ -5,26 +5,34 @@ import 'package:colgaia_convento/services/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
 class DayScreen extends StatefulWidget {
-  const DayScreen({Key key, day}) : super(key: key);
+  final String id;
+
+  DayScreen({this.id});
 
   @override
-  _DayScreenState createState() => _DayScreenState();
+  _DayScreenState createState() => _DayScreenState(id: id);
 }
 
 class _DayScreenState extends State<DayScreen> {
+
+  final String id;
   Day day;
+
+  _DayScreenState({this.id});
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-
-    getDay().then((newday) => setState(() => {day = newday}));
+      getDay()
+        .then((newday) => setState(() => {day = newday}));
+        print(this.id);
   }
 
-  Future<Day> getDay() async {
-    var url = BASE_URL + "/api/days";
+   Future<Day> getDay() async {
+     
+    var url = BASE_URL + "/api/days/" + this.id;
 
     Response response =
         await http.get(url, headers: {"Accept": "application/json"});
@@ -36,6 +44,7 @@ class _DayScreenState extends State<DayScreen> {
     return Day.fromJson(data);
   }
 
+  
   @override
   Widget build(BuildContext context) {
     // ? We'll be using this to define the stroke
@@ -48,7 +57,7 @@ class _DayScreenState extends State<DayScreen> {
           Stack(
             children: <Widget>[
               Image(
-                image: AssetImage('assets/images/dayImage.jpg'),
+                image: NetworkImage("https://picsum.photos/1280/720"),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +65,7 @@ class _DayScreenState extends State<DayScreen> {
                   Container(
                     margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
                     child: Text(
-                      "Dia ${day.id}",
+                      day != null ? "Dia ${day.id}" : "Dia X",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 50.0,
@@ -103,7 +112,7 @@ class _DayScreenState extends State<DayScreen> {
           Container(
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 0.0),
             child: Text(
-              "Mateus 7, 21.24-27",
+              day != null ? day.sentenceAuthor : "Mateus 7, 21.24-27",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).accentColor,
@@ -115,7 +124,7 @@ class _DayScreenState extends State<DayScreen> {
             alignment: Alignment.topLeft,
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
-              '" Caiu a chuva, vieram as torrentes, sopraram os ventos... mas aquela casa não caia. "',
+              day != null ? day.sentence : '" Caiu a chuva, vieram as torrentes, sopraram os ventos... mas aquela casa não caia. "',
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 25.0,
@@ -139,7 +148,7 @@ class _DayScreenState extends State<DayScreen> {
             alignment: Alignment.topLeft,
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
-              "A vida está cheia de imprevistos. \nAlguns, bem mais sérios do que uma tempestade ou uma ventania. \nOs amigos falham-nos, \na nossa força de vontade entra em crise, \nperdemos o entusiasmo com o que ontem sonhavamos. E parece que a vida toda de desmorona.",
+              day != null ? day.pray : "A vida está cheia de imprevistos. \nAlguns, bem mais sérios do que uma tempestade ou uma ventania. \nOs amigos falham-nos, \na nossa força de vontade entra em crise, \nperdemos o entusiasmo com o que ontem sonhavamos. E parece que a vida toda de desmorona.",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 20.0,
@@ -163,7 +172,7 @@ class _DayScreenState extends State<DayScreen> {
             alignment: Alignment.topLeft,
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
             child: Text(
-              "Quando construo a minha vida \nem cima da tua Palavra, \nnão há tempestade que me deite abaixo. \nEm Ti, no teu amor sem limites, \nencontro a força e luz \npara superar todos os desânimos.",
+              day != null ? day.pray : "Quando construo a minha vida \nem cima da tua Palavra, \nnão há tempestade que me deite abaixo. \nEm Ti, no teu amor sem limites, \nencontro a força e luz \npara superar todos os desânimos.",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 20.0,
