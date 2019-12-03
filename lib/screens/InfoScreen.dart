@@ -41,7 +41,7 @@ class InfoScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 0),
               child: Text(
-                "O Advento é aquela cena onde celebramos aquela parte do ano e tal e depois vai desde 1 de dezembro a 25 do mesmo mesmo. Obrigado. Btw, o Padre não sabe o advento.",
+                "O Advento é o primeiro tempo do Ano litúrgico, o qual antecede o Natal. Para os cristãos, é um tempo de preparação e alegria, de expectativa, onde os fiéis, esperando o Nascimento de Jesus Cristo , vivem o arrependimento e promovem a fraternidade e a Paz. No calendário religioso este tempo corresponde às quatro semanas que antecedem o Natal.",
                 style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.grey,

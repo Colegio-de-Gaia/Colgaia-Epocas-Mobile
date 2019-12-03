@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:colgaia_convento/models/DayModel.dart';
 import 'package:colgaia_convento/models/OccasionModel.dart';
 import 'package:colgaia_convento/services/Occasions.dart';
 import 'package:colgaia_convento/services/domain/domain.dart';
@@ -20,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Occasion occasion;
+  EventList<Event> _eventList = EventList<Event>(events: {});
 
   @override
   void initState() {
@@ -83,13 +85,13 @@ class Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime _startDate = occasion.startAt;
-    final DateTime _endDate = occasion.endAt;
-    final DateTime _now = DateTime.now();
+     DateTime _startDate = occasion.startAt;
+     DateTime _endDate = occasion.endAt;
+     DateTime _now = DateTime.now();
     DateTime _selectedDate;
 
-    List<DateTime> _active = List<DateTime>();
-    List<DateTime> _notActive = List<DateTime>();
+    List<DateTime> _active = [];
+    List<DateTime> _notActive = [];
 
     EventList<Event> _eventList = EventList<Event>(events: {});
 
@@ -98,26 +100,30 @@ class Calendar extends StatelessWidget {
     }
 
     for (int i = 0; i <= _endDate.difference(_now).inDays; i++) {
+
       _notActive.add(_now.add(Duration(days: i)));
     }
 
-    for (int i = 0; i < _active.length; i++) {
+
+    for (DateTime date in _active) {
       _eventList.add(
-          _active[i],
+          date,
           Event(
-              date: _active[i],
-              icon: _Icon(context, _active[i].day.toString(), true),
+              date: date,
+              icon: _Icon(context, date.day.toString(), true),
               title: "Advento"));
     }
 
-    for (int i = 0; i < _notActive.length; i++) {
+    for (DateTime date in _notActive) {
       _eventList.add(
-          _notActive[i],
+          date,
           Event(
-              date: _notActive[i],
-              icon: _Icon(context, _notActive[i].day.toString(), false),
-              title: "Not Advento"));
+              date: date,
+              icon: _Icon(context, date.day.toString(), true),
+              title: "Advento"));
     }
+
+    print(_eventList.events.length);
 
     return CalendarCarousel(
       weekFormat: false,
@@ -128,11 +134,12 @@ class Calendar extends StatelessWidget {
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
       markedDateMoreShowTotal: null,
-      markedDateIconBuilder: (event) {
-        return event.icon;
-      },
+ 
       selectedDayButtonColor: Theme.of(context).primaryColor,
       todayButtonColor: Theme.of(context).primaryColor,
+      
+
+
       headerTextStyle: TextStyle(
         color: Colors.black,
         fontSize: 25.0,
@@ -143,7 +150,8 @@ class Calendar extends StatelessWidget {
       iconColor: Colors.black,
       onDayPressed: (DateTime date, List<Event> events) {
         _selectedDate = date;
-        Navigator.of(context).pushNamed('day/$date');
+        Day day = occasion.getCurrentDay(date);
+        if(day != null) Navigator.of(context).pushNamed('day/${day.id.toString()}');
       },
       minSelectedDate: _startDate,
       maxSelectedDate: _endDate,
