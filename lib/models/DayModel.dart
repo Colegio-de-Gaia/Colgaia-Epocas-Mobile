@@ -4,23 +4,23 @@ class Day {
   String _sentence;
   String _sentenceAuthor;
   String _pray;
-  String _photoPath;
   String _photoName;
   int _occasionID;
   DateTime _createdAt;
   DateTime _updatedAt;
+  String _url;
 
   Day.fromJson(Map<String, dynamic> json)
       : _id = json['id'],
-        _date = json['date'] as DateTime,
+        _date = DateTime.parse(json['date']),
         _sentence = json['sentence'],
         _sentenceAuthor = json['sentence_author'],
         _pray = json['pray'],
-        _photoPath = json['photo_path'],
         _photoName = json['phoeto_name'],
         _occasionID = json['occasion_id'],
-        _createdAt = json['created_at'] as DateTime,
-        _updatedAt = json['updated_at'] as DateTime;
+        _createdAt = DateTime.parse(json['created_at']),
+        _updatedAt = DateTime.parse(json['updated_at']),
+        _url = json['url'];
 
   Map<String, dynamic> toJson() => {
         'id': _id,
@@ -28,11 +28,11 @@ class Day {
         'sentence': _sentence,
         'sentence_author': _sentenceAuthor,
         'pray': _pray,
-        'photo_path': _photoPath,
         'photo_name': _photoName,
         'occasion_id': _occasionID,
         'created_at': _createdAt,
-        'updated_at': _updatedAt
+        'updated_at': _updatedAt,
+        'url' : _url
       };
 
   // * Getters
@@ -41,11 +41,12 @@ class Day {
   String get sentence => _sentence;
   String get sentenceAuthor => _sentenceAuthor;
   String get pray => _pray;
-  String get photoPath => _photoPath;
-  String get photoName => _photoPath;
+  String get photoName => _photoName;
   int get occasionID => _occasionID;
   DateTime get createdAT => _createdAt;
   DateTime get updatedAt => _updatedAt;
+
+  String get url => _url;
 
   // * Setters
   set id(int id) => _id = id;
@@ -53,11 +54,11 @@ class Day {
   set sentence(String sentence) => _sentence = sentence;
   set sentenceAuthor(String setenceAuthor) => _sentenceAuthor = setenceAuthor;
   set pray(String pray) => _pray = pray;
-  set photoPath(String photoPath) => _photoPath = photoPath;
-  set photoName(String photoName) => _photoPath = photoName;
+  set photoName(String photoName) => _photoName = photoName;
   set occasionID(int occasionID) => _occasionID = occasionID;
   set createdAt(DateTime createdAt) => _createdAt = createdAt;
   set updatedAt(DateTime updatedAt) => _updatedAt = updatedAt;
+  set url(String url) => _url = url;
 
   Day(
     this._id,
@@ -65,10 +66,10 @@ class Day {
     this._sentence,
     this._sentenceAuthor,
     this._pray,
-    this._photoPath,
     this._photoName,
     this._occasionID,
     this._createdAt,
     this._updatedAt,
+    this._url,
   );
 }
