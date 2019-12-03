@@ -32,7 +32,7 @@ class Day {
         'occasion_id': _occasionID,
         'created_at': _createdAt,
         'updated_at': _updatedAt,
-        'url' : _url
+        'url': _url
       };
 
   // * Getters

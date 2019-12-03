@@ -18,9 +18,10 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/backgroundImage.jpg"),
-            fit: BoxFit.cover,
-          ),
+              image: AssetImage("assets/images/backgroundImage.jpg"),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.4), BlendMode.luminosity)),
         ),
         child: Column(
           children: <Widget>[

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:colgaia_convento/models/DayModel.dart';
 import 'package:colgaia_convento/models/OccasionModel.dart';
+import 'package:colgaia_convento/screens/SplashScreen.dart';
 import 'package:colgaia_convento/services/Occasions.dart';
 import 'package:colgaia_convento/services/domain/domain.dart';
 import 'package:colgaia_convento/widgets/Drawer.dart';
@@ -27,8 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    getOccasion()
-        .then((newoccasion) => setState(() => {occasion = newoccasion}));
+    Future.delayed(
+        const Duration(seconds: 3),
+        () => getOccasion()
+            .then((newoccasion) => setState(() => {occasion = newoccasion})));
   }
 
   Future<Occasion> getOccasion() async {
@@ -56,25 +59,27 @@ class _HomeScreenState extends State<HomeScreen> {
       statusBarColor: Colors.transparent,
     ));
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        centerTitle: true,
-        title: occasion != null
-            ? Text(("Colgaia ${occasion.name}").toUpperCase())
-            : Text(""),
-        elevation: 0.0,
-      ),
-      drawer: DrawerWidget(),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40.0),
-        child: occasion != null
-            ? Calendar(
-                occasion: occasion,
-              )
-            : Container(),
-      ),
-    );
+    return occasion == null
+        ? SplashScreen()
+        : Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).primaryColor,
+              centerTitle: true,
+              title: occasion != null
+                  ? Text(("Colgaia ${occasion.name}").toUpperCase())
+                  : Text(""),
+              elevation: 0.0,
+            ),
+            drawer: DrawerWidget(),
+            body: Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: occasion != null
+                  ? Calendar(
+                      occasion: occasion,
+                    )
+                  : Container(),
+            ),
+          );
   }
 }
 
@@ -85,10 +90,9 @@ class Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     DateTime _startDate = occasion.startAt;
-     DateTime _endDate = occasion.endAt;
-     DateTime _now = DateTime.now();
-    DateTime _selectedDate;
+    DateTime _startDate = occasion.startAt;
+    DateTime _endDate = occasion.endAt;
+    DateTime _now = DateTime.now();
 
     List<DateTime> _active = [];
     List<DateTime> _notActive = [];
@@ -100,10 +104,8 @@ class Calendar extends StatelessWidget {
     }
 
     for (int i = 0; i <= _endDate.difference(_now).inDays; i++) {
-
       _notActive.add(_now.add(Duration(days: i)));
     }
-
 
     for (DateTime date in _active) {
       _eventList.add(
@@ -134,12 +136,8 @@ class Calendar extends StatelessWidget {
       markedDateShowIcon: true,
       markedDateIconMaxShown: 1,
       markedDateMoreShowTotal: null,
- 
       selectedDayButtonColor: Theme.of(context).primaryColor,
       todayButtonColor: Theme.of(context).primaryColor,
-      
-
-
       headerTextStyle: TextStyle(
         color: Colors.black,
         fontSize: 25.0,
@@ -149,9 +147,9 @@ class Calendar extends StatelessWidget {
       ),
       iconColor: Colors.black,
       onDayPressed: (DateTime date, List<Event> events) {
-        _selectedDate = date;
         Day day = occasion.getCurrentDay(date);
-        if(day != null) Navigator.of(context).pushNamed('day/${day.id.toString()}');
+        if (day != null)
+          Navigator.of(context).pushNamed('day/${day.id.toString()}');
       },
       minSelectedDate: _startDate,
       maxSelectedDate: _endDate,
