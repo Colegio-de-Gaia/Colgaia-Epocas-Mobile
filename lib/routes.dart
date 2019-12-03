@@ -14,7 +14,7 @@ class FluroRouter {
 
   static Handler _dayHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-          DayScreen());
+          DayScreen(day: params.values));
   static Handler _homeHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           HomeScreen());
@@ -36,7 +36,7 @@ class FluroRouter {
 
   static void setupRouter() {
     router.define(
-      'day',
+      'day/:day',
       handler: _dayHandler,
     );
     router.define(

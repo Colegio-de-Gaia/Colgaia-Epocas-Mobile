@@ -25,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    getOccasion().then((newoccasion) => setState(() => {occasion = newoccasion}));
+    getOccasion()
+        .then((newoccasion) => setState(() => {occasion = newoccasion}));
   }
 
   Future<Occasion> getOccasion() async {
@@ -57,15 +58,19 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
-        title: occasion != null ? Text(("Colgaia ${occasion.name}").toUpperCase()) : Text(""),
+        title: occasion != null
+            ? Text(("Colgaia ${occasion.name}").toUpperCase())
+            : Text(""),
         elevation: 0.0,
       ),
       drawer: DrawerWidget(),
       body: Padding(
         padding: const EdgeInsets.only(top: 40.0),
-        child: occasion != null ? Calendar(
-          occasion: occasion,
-        ) : Container(),
+        child: occasion != null
+            ? Calendar(
+                occasion: occasion,
+              )
+            : Container(),
       ),
     );
   }
@@ -76,18 +81,17 @@ class Calendar extends StatelessWidget {
 
   Calendar({this.occasion});
 
-
   @override
   Widget build(BuildContext context) {
+    final DateTime _startDate = occasion.startAt;
+    final DateTime _endDate = occasion.endAt;
+    final DateTime _now = DateTime.now();
+    DateTime _selectedDate;
 
-  final DateTime _startDate = occasion.startAt;
-  final DateTime _endDate = occasion.endAt;
-  final DateTime _now = DateTime.now();
+    List<DateTime> _active = List<DateTime>();
+    List<DateTime> _notActive = List<DateTime>();
 
-  List<DateTime> _active = List<DateTime>();
-  List<DateTime> _notActive = List<DateTime>();
-
-  EventList<Event> _eventList = EventList<Event>(events: {});
+    EventList<Event> _eventList = EventList<Event>(events: {});
 
     for (int i = 0; i <= _now.difference(_startDate).inDays; i++) {
       _active.add(_startDate.add(Duration(days: i)));
@@ -138,7 +142,8 @@ class Calendar extends StatelessWidget {
       ),
       iconColor: Colors.black,
       onDayPressed: (DateTime date, List<Event> events) {
-        Navigator.of(context).pushNamed('day');
+        _selectedDate = date;
+        Navigator.of(context).pushNamed('day/$date');
       },
       minSelectedDate: _startDate,
       maxSelectedDate: _endDate,

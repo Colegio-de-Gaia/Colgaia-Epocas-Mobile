@@ -1,7 +1,40 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-class DayScreen extends StatelessWidget {
-  const DayScreen({Key key}) : super(key: key);
+import 'package:colgaia_convento/models/DayModel.dart';
+import 'package:colgaia_convento/services/domain/domain.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+
+class DayScreen extends StatefulWidget {
+  const DayScreen({Key key, day}) : super(key: key);
+
+  @override
+  _DayScreenState createState() => _DayScreenState();
+}
+
+class _DayScreenState extends State<DayScreen> {
+  Day day;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getDay().then((newday) => setState(() => {day = newday}));
+  }
+
+  Future<Day> getDay() async {
+    var url = BASE_URL + "/api/days";
+
+    Response response =
+        await http.get(url, headers: {"Accept": "application/json"});
+
+    if (response.statusCode != 200) return null;
+
+    var data = json.decode(response.body);
+
+    return Day.fromJson(data);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +56,7 @@ class DayScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
                     child: Text(
-                      "Dia 5",
+                      "Dia ${day.id}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 50.0,
