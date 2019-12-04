@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: adventoThemeLight(),
-      initialRoute: 'home',
+      initialRoute: 'wait',
       onGenerateRoute: FluroRouter.router.generator,
     );
   }

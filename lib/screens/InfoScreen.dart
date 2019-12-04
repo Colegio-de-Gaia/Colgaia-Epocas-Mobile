@@ -1,3 +1,6 @@
+import 'package:colgaia_convento/local/pt.dart';
+import 'package:colgaia_convento/widgets/Drawer.dart';
+import 'package:colgaia_convento/widgets/Typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,33 +19,21 @@ class InfoScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
-        title: Text("Sobre".toUpperCase()),
+        title: Text(
+          "Sobre".toUpperCase(),
+          style: TextStyle(fontWeight: FontWeight.w800),
+        ),
         elevation: 0.0,
       ),
       body: Center(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: Text(
-                "O que é o Advento?".toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 25.0,
-                  color: Theme.of(context).accentColor,
-                ),
-              ),
+            buildTitle(
+              context,
+              "O que é o Advento?".toUpperCase(),
+              alignment: Alignment.topCenter,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 0),
-              child: Text(
-                "O Advento é aquela cena onde celebramos aquela parte do ano e tal e depois vai desde 1 de dezembro a 25 do mesmo mesmo. Obrigado. Btw, o Padre não sabe o advento.",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
+            buildParagraph(ADVENTO, align: TextAlign.justify),
           ],
         ),
       ),
