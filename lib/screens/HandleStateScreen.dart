@@ -22,8 +22,8 @@ class _HandleStateScreenState extends State<HandleStateScreen> {
         Duration(seconds: 2),
         () => OccasionRepository()
             .getCurrentOccasion()
-            .then((n) => setState(() => {_occasion = n}))
-            .catchError((err) => setState(() => {_err = true})));
+            .then((n) => setState(() => _occasion = n))
+            .catchError((err) => setState(() => _err = true)));
     return Provider<Occasion>.value(
       value: _occasion,
       child: _occasion == null

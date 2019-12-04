@@ -31,7 +31,6 @@ class OccasionRepository {
     DateTime _startDate = occasion.startAt;
     DateTime _endDate = occasion.endAt;
     DateTime _now = DateTime.now();
-    DateTime _selectedDate;
 
     List<DateTime> _active = [];
     List<DateTime> _notActive = [];

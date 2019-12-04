@@ -5,18 +5,17 @@ import 'package:flutter/material.dart';
 class CandleScreen extends StatelessWidget {
   const CandleScreen({Key key}) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
-    // ? We'll be using this to define the stroke
-    // ? showing the day text
-    double strokeSize = 2.0;
 
+    
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             title: Text("Velas do Advento"),
-            pinned: false,
             expandedHeight: 300.0,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
@@ -51,7 +50,7 @@ class CandleScreen extends StatelessWidget {
 }
 
 class PlatformWidget extends StatelessWidget with PreferredSizeWidget {
-  String name;
+  final String name;
 
   PlatformWidget({this.name});
 
