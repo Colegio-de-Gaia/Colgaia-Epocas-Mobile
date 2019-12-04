@@ -43,9 +43,11 @@ class InfoScreen extends StatelessWidget {
               child: Text(
                 "O Advento é o primeiro tempo do Ano litúrgico, o qual antecede o Natal. Para os cristãos, é um tempo de preparação e alegria, de expectativa, onde os fiéis, esperando o Nascimento de Jesus Cristo , vivem o arrependimento e promovem a fraternidade e a Paz. No calendário religioso este tempo corresponde às quatro semanas que antecedem o Natal.",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                   color: Colors.grey,
+                  
                 ),
+                textAlign: TextAlign.justify,
               ),
             ),
           ],

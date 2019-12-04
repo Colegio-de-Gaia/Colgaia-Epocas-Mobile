@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key key}) : super(key: key);
@@ -17,6 +18,21 @@ class DrawerWidget extends StatelessWidget {
                     title: Text("Calendário"),
                     trailing: Icon(
                       Icons.calendar_today,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    onTap: () => Navigator.of(context).pushNamed('home'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Text("Velas"),
+                    trailing: Icon(
+                      MaterialCommunityIcons.candle,
                       color: Theme.of(context).accentColor,
                     ),
                     onTap: () => Navigator.of(context).pushNamed('home'),

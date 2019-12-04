@@ -9,6 +9,7 @@ class Day {
   DateTime _createdAt;
   DateTime _updatedAt;
   String _url;
+  String _reflection;
 
   Day.fromJson(Map<String, dynamic> json)
       : _id = json['id'],
@@ -16,7 +17,8 @@ class Day {
         _sentence = json['sentence'],
         _sentenceAuthor = json['sentence_author'],
         _pray = json['pray'],
-        _photoName = json['phoeto_name'],
+        _photoName = json['photo_name'],
+        _reflection = json['reflection'],
         _occasionID = json['occasion_id'],
         _createdAt = DateTime.parse(json['created_at']),
         _updatedAt = DateTime.parse(json['updated_at']),
@@ -28,6 +30,7 @@ class Day {
         'sentence': _sentence,
         'sentence_author': _sentenceAuthor,
         'pray': _pray,
+        'reflection': _reflection,
         'photo_name': _photoName,
         'occasion_id': _occasionID,
         'created_at': _createdAt,
@@ -44,6 +47,7 @@ class Day {
   String get photoName => _photoName;
   int get occasionID => _occasionID;
   DateTime get createdAT => _createdAt;
+  String get reflection => _reflection;
   DateTime get updatedAt => _updatedAt;
 
   String get url => _url;
@@ -59,6 +63,7 @@ class Day {
   set createdAt(DateTime createdAt) => _createdAt = createdAt;
   set updatedAt(DateTime updatedAt) => _updatedAt = updatedAt;
   set url(String url) => _url = url;
+  set reflection(String reflection) => _reflection = reflection;
 
   Day(
     this._id,
@@ -71,5 +76,6 @@ class Day {
     this._createdAt,
     this._updatedAt,
     this._url,
+    this._reflection,
   );
 }

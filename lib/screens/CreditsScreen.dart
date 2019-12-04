@@ -20,40 +20,48 @@ class CreditsScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
+
             Padding(
-              padding: const EdgeInsets.only(top: 90.0),
-              child: Text(
-                "Feito por: SE3ME Solutions",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w800),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 30.0),
               child: Text(
                 "Programadores envolvidos:",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600,color: Theme.of(context).accentColor),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30.0),
               child: Text(
-                "Miguel Ferreira\n\nRodrigo Ramos\n\nVasco Martins",
-                style: TextStyle(fontSize: 18.0),
+                "Miguel Ferreira\nRodrigo Ramos\nVasco Martins",
+                style: TextStyle(fontSize: 17.0, color: Colors.grey),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
               child: Text(
                 "Revisores:",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600, color: Theme.of(context).accentColor),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30.0),
               child: Text(
-                "Maria José Costa\n\nRui Baptista",
-                style: TextStyle(fontSize: 18.0),
+                "Maria José Costa\nRui Baptista",
+                style: TextStyle(fontSize: 17.0, color: Colors.grey),
               ),
+            ),
+            Expanded(
+                child: Container(
+                margin: EdgeInsets.only(bottom: 20),
+                child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Text(
+                  "Copyright (c) SE3ME Solutions 2019\nColégio de Gaia",
+                  style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.w400, color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
+                
+              ),
+                          ),
             ),
           ],
         ),

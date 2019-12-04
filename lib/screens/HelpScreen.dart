@@ -24,14 +24,14 @@ class HelpScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 50.0),
               child: Text(
                 "Como usar a aplicação?",
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700, color: Theme.of(context).accentColor),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 0.0),
               child: Text(
                 "Cada época tem uma certa duração, que pode ser vista no calendário, e este calendário é a parte principal da aplicação.\n\nExperimente aceder ao calendário clicando no menu em cima (perto de 'AJUDA') e clique na secção que diz 'Calendário'.\n\nAo clicar no calendário verá uma série de dias, também clicáveis. Nestes dias vai encontrar um desenho feito por alunos do colégio, um trecho da Bíblia, uma reflexão e, por fim, uma oração.\n\nSe quiser pode ainda ter uma contextualização da época ao abrir o menu (ao lado de 'AJUDA') e clicar na aba 'Sobre a aplicação'.",
-                style: TextStyle(fontSize: 15.0),
+                style: TextStyle(fontSize: 17.0, color: Colors.grey),
                 textAlign: TextAlign.justify,
               ),
             )

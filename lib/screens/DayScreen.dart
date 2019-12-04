@@ -152,7 +152,7 @@ class _DayScreenState extends State<DayScreen> {
             margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
               day != null
-                  ? day.pray
+                  ? day.reflection
                   : "A vida está cheia de imprevistos. \nAlguns, bem mais sérios do que uma tempestade ou uma ventania. \nOs amigos falham-nos, \na nossa força de vontade entra em crise, \nperdemos o entusiasmo com o que ontem sonhavamos. E parece que a vida toda de desmorona.",
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
