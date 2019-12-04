@@ -1,3 +1,5 @@
+import 'package:colgaia_convento/screens/CreditsScreen.dart';
+import 'package:colgaia_convento/screens/InfoScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -12,21 +14,7 @@ class DrawerWidget extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListTile(
-                    title: Text("Calendário"),
-                    trailing: Icon(
-                      Icons.calendar_today,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    onTap: () => Navigator.of(context).pushNamed('home'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-                  child: Divider(),
-                ),
+               
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ListTile(
@@ -35,7 +23,7 @@ class DrawerWidget extends StatelessWidget {
                       MaterialCommunityIcons.candle,
                       color: Theme.of(context).accentColor,
                     ),
-                    onTap: () => Navigator.of(context).pushNamed('home'),
+                    onTap: () => Navigator.of(context).popAndPushNamed('candle'),
                   ),
                 ),
                 Padding(
@@ -50,7 +38,7 @@ class DrawerWidget extends StatelessWidget {
                       Icons.help,
                       color: Theme.of(context).accentColor,
                     ),
-                    onTap: () => Navigator.of(context).pushNamed('help'),
+                    onTap: () => Navigator.of(context).popAndPushNamed('help'),
                   ),
                 ),
                 Padding(
@@ -65,7 +53,7 @@ class DrawerWidget extends StatelessWidget {
                       Icons.info,
                       color: Theme.of(context).accentColor,
                     ),
-                    onTap: () => Navigator.of(context).pushNamed('info'),
+                    onTap: () => Navigator.of(context).popAndPushNamed('info'),
                   ),
                 ),
                 Padding(
@@ -80,7 +68,7 @@ class DrawerWidget extends StatelessWidget {
                       Icons.people,
                       color: Theme.of(context).accentColor,
                     ),
-                    onTap: () => Navigator.of(context).pushNamed('credits'),
+                    onTap: () => Navigator.of(context).popAndPushNamed('credits'),
                   ),
                 ),
               ],

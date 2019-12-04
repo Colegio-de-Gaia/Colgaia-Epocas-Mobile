@@ -16,7 +16,6 @@ class CreditsScreen extends StatelessWidget {
         ),
         elevation: 0.0,
       ),
-      drawer: DrawerWidget(),
       body: Center(
         child: Column(
           children: <Widget>[

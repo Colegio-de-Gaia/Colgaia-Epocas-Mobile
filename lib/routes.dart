@@ -1,6 +1,7 @@
 import 'package:colgaia_convento/screens/CandleScreen.dart';
 import 'package:colgaia_convento/screens/CreditsScreen.dart';
 import 'package:colgaia_convento/screens/DayScreen.dart';
+import 'package:colgaia_convento/screens/HandleStateScreen.dart';
 import 'package:colgaia_convento/screens/HelpScreen.dart';
 import 'package:colgaia_convento/screens/HomeScreen.dart';
 import 'package:colgaia_convento/screens/InfoScreen.dart';
@@ -33,6 +34,9 @@ class FluroRouter {
   static Handler _helpHandler = Handler(
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           HelpScreen());
+  static Handler _waitHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          HandleStateScreen());
 
   static void setupRouter() {
     router.define(
@@ -62,6 +66,10 @@ class FluroRouter {
     router.define(
       'help',
       handler: _helpHandler,
+    );
+    router.define(
+      'wait',
+      handler: _waitHandler,
     );
   }
 }

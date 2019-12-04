@@ -1,4 +1,6 @@
+import 'package:colgaia_convento/local/pt.dart';
 import 'package:colgaia_convento/widgets/Drawer.dart';
+import 'package:colgaia_convento/widgets/Typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -23,33 +25,15 @@ class InfoScreen extends StatelessWidget {
         ),
         elevation: 0.0,
       ),
-      drawer: DrawerWidget(),
       body: Center(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0),
-              child: Text(
-                "O que é o Advento?".toUpperCase(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 25.0,
-                  color: Theme.of(context).accentColor,
-                ),
-              ),
+            buildTitle(
+              context,
+              "O que é o Advento?".toUpperCase(),
+              alignment: Alignment.topCenter,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 0),
-              child: Text(
-                "O Advento é o primeiro tempo do Ano litúrgico, o qual antecede o Natal. Para os cristãos, é um tempo de preparação e alegria, de expectativa, onde os fiéis, esperando o Nascimento de Jesus Cristo , vivem o arrependimento e promovem a fraternidade e a Paz. No calendário religioso este tempo corresponde às quatro semanas que antecedem o Natal.",
-                style: TextStyle(
-                  fontSize: 17.0,
-                  color: Colors.grey,
-                  
-                ),
-                textAlign: TextAlign.justify,
-              ),
-            ),
+            buildParagraph(ADVENTO, align: TextAlign.justify),
           ],
         ),
       ),

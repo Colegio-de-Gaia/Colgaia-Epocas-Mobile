@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:colgaia_convento/models/DayModel.dart';
 import 'package:colgaia_convento/models/OccasionModel.dart';
-import 'package:colgaia_convento/services/Occasions.dart';
+import 'package:colgaia_convento/screens/SplashScreen.dart';
 import 'package:colgaia_convento/services/domain/domain.dart';
 import 'package:colgaia_convento/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +12,8 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:provider/provider.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
@@ -26,65 +28,48 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
-    getOccasion()
-        .then((newoccasion) => setState(() => {occasion = newoccasion}));
-  }
-
-  Future<Occasion> getOccasion() async {
-    var url = BASE_URL + "/api/current/occasion";
-
-    Response response =
-        await http.get(url, headers: {"Accept": "application/json"});
-
-    if (response.statusCode != 200) return null;
-
-    var data = json.decode(response.body);
-
-    // ? This means that there is no current occasion
-    // ? Poor non occasion date :(
-    if (data['id'] == -1) return null;
-
-    return Occasion.fromJson(data);
   }
 
   @override
   Widget build(BuildContext context) {
     // * With this, we're simply removing the status bar
     // * (status bar is the one where you can see your notifications)
+
+    occasion = Provider.of<Occasion>(context);
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        centerTitle: true,
-        title: occasion != null
-            ? Text(("Colgaia ${occasion.name}").toUpperCase())
-            : Text(""),
-        elevation: 0.0,
-      ),
-      drawer: DrawerWidget(),
-      body: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
-                child: Column(
-                  
+    return occasion == null
+        ? SplashScreen()
+        : Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).primaryColor,
+              centerTitle: true,
+              title: occasion != null
+                  ? Text(("Colgaia ${occasion.name}").toUpperCase())
+                  : Text(""),
+              elevation: 0.0,
+            ),
+            drawer: DrawerWidget(),
+            body: SingleChildScrollView(
+                child: ConstrainedBox(
+              constraints:
+                  BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
+              child: Column(
                 children: <Widget>[
-                  
-                  occasion == null ? Container() : Expanded(
-                        child: Calendar(
-                        occasion: occasion,
-                 ),
-                  ),
+                  occasion == null
+                      ? Container()
+                      : Expanded(
+                          child: Calendar(
+                            occasion: occasion,
+                          ),
+                        ),
                 ],
               ),
-            )
-          ),
-
-      
-    );
+            )),
+          );
   }
 }
 
@@ -95,9 +80,9 @@ class Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     DateTime _startDate = occasion.startAt;
-     DateTime _endDate = occasion.endAt;
-     DateTime _now = DateTime.now();
+    DateTime _startDate = occasion.startAt;
+    DateTime _endDate = occasion.endAt;
+    DateTime _now = DateTime.now();
     DateTime _selectedDate;
 
     List<DateTime> _active = [];
@@ -110,46 +95,35 @@ class Calendar extends StatelessWidget {
     }
 
     for (int i = 0; i <= _endDate.difference(_now).inDays; i++) {
-
       _notActive.add(_now.add(Duration(days: i)));
     }
-
 
     for (DateTime date in _active) {
       _eventList.add(
           date,
-          Event(
+          new Event(
               date: date,
-              icon: _Icon(context, date.day.toString(), true),
+              dot: _Icon(context, date.day.toString(), true),
               title: "Advento"));
     }
 
     for (DateTime date in _notActive) {
       _eventList.add(
           date,
-          Event(
+          new Event(
               date: date,
               icon: _Icon(context, date.day.toString(), true),
               title: "Advento"));
     }
 
-    print(_eventList.events.length);
-
-    return CalendarCarousel(
+    return CalendarCarousel<Event>(
       weekFormat: false,
       weekendTextStyle: TextStyle(
         color: Colors.black,
       ),
-      markedDatesMap: _eventList,
-      markedDateShowIcon: true,
-      markedDateIconMaxShown: 1,
-      markedDateMoreShowTotal: null,
- 
       selectedDayButtonColor: Theme.of(context).primaryColor,
-      todayButtonColor: Theme.of(context).primaryColor,
-      
-
-
+      todayButtonColor: Theme.of(context).accentColor,
+      onDayLongPressed: (datetime) => {},
       headerTextStyle: TextStyle(
         color: Colors.black,
         fontSize: 25.0,
@@ -159,22 +133,31 @@ class Calendar extends StatelessWidget {
       ),
       iconColor: Colors.black,
       onDayPressed: (DateTime date, List<Event> events) {
-        _selectedDate = date;
         Day day = occasion.getCurrentDay(date);
-        if(day != null) Navigator.of(context).pushNamed('day/${day.id.toString()}');
+        if (day != null)
+          Navigator.of(context).pushNamed('day/${day.id.toString()}');
       },
       minSelectedDate: _startDate,
       maxSelectedDate: _endDate,
+      showIconBehindDayText: true,
+      markedDatesMap: _eventList,
+      markedDateCustomTextStyle: TextStyle(color: Colors.white),
+      markedDateShowIcon: true,
+      markedDateIconMaxShown: 4,
+      markedDateMoreShowTotal: null,
+      markedDateIconBuilder: (event) => event.dot,
     );
   }
 
-  static Widget _Icon(BuildContext context, String day, bool active) =>
-      Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.all(Radius.circular(1000)),
-          ),
-          child: Center(
-            child: Text(day, style: TextStyle(color: Colors.white)),
-          ));
+  static Widget _Icon(BuildContext context, String day, bool active) {
+    return Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).accentColor,
+          borderRadius: BorderRadius.all(Radius.circular(1000)),
+        ),
+        child: Icon(
+          Icons.person,
+          color: Colors.black,
+        ));
+  }
 }

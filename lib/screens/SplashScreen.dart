@@ -1,13 +1,17 @@
 import 'dart:ui';
+import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key key}) : super(key: key);
+  final bool error;
+
+  const SplashScreen({Key key, this.error}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final key = new GlobalKey<ScaffoldState>();
     // * With this, we're simply removing the status bar
     // * (status bar is the one where you can see your notifications)
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -15,6 +19,7 @@ class SplashScreen extends StatelessWidget {
     ));
 
     return Scaffold(
+      key: key,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -43,14 +48,24 @@ class SplashScreen extends StatelessWidget {
                 image: AssetImage('assets/images/logoConvento.png'),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 50.0),
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  Color(0xffFFFFFF),
-                ),
-              ),
-            ),
+            error
+                ? Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Não foi possível fazer conexão com a base de dados. Tente novamente mais tarde",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
+                    ))
+                : Container(
+                    margin: EdgeInsets.only(top: 50.0),
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Color(0xffFFFFFF),
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),
