@@ -24,9 +24,8 @@ class _DayScreenState extends State<DayScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getDay().then((newday) => setState(() => {day = newday}));
+    getDay().then((newday) => setState(() => day = newday));
     print(this.id);
     print("entrou");
   }
@@ -104,6 +103,7 @@ class _DayScreenState extends State<DayScreen> {
                                   Colors.black.withOpacity(0.4),
                                   BlendMode.luminosity))),
                     ),
+                    
                   ),
                 ),
                 SliverList(
@@ -150,7 +150,7 @@ class _DayScreenState extends State<DayScreen> {
 }
 
 class PlatformWidget extends StatelessWidget with PreferredSizeWidget {
-  String name;
+  final String name;
 
   PlatformWidget({this.name});
 

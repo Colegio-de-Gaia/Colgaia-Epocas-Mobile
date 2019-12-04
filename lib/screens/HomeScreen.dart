@@ -1,17 +1,11 @@
-import 'dart:convert';
-
 import 'package:colgaia_convento/models/DayModel.dart';
 import 'package:colgaia_convento/models/OccasionModel.dart';
 import 'package:colgaia_convento/screens/SplashScreen.dart';
-import 'package:colgaia_convento/services/domain/domain.dart';
 import 'package:colgaia_convento/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Occasion occasion;
-  EventList<Event> _eventList = EventList<Event>(events: {});
 
   @override
   void initState() {
@@ -36,10 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
     // * (status bar is the one where you can see your notifications)
 
     occasion = Provider.of<Occasion>(context);
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ));
 
     return occasion == null
         ? SplashScreen()
@@ -83,7 +72,6 @@ class Calendar extends StatelessWidget {
     DateTime _startDate = occasion.startAt;
     DateTime _endDate = occasion.endAt;
     DateTime _now = DateTime.now();
-    DateTime _selectedDate;
 
     List<DateTime> _active = [];
     List<DateTime> _notActive = [];
@@ -103,7 +91,7 @@ class Calendar extends StatelessWidget {
           date,
           new Event(
               date: date,
-              dot: _Icon(context, date.day.toString(), true),
+              dot: _icon(context, date.day.toString(), true),
               title: "Advento"));
     }
 
@@ -112,7 +100,7 @@ class Calendar extends StatelessWidget {
           date,
           new Event(
               date: date,
-              icon: _Icon(context, date.day.toString(), true),
+              icon: _icon(context, date.day.toString(), true),
               title: "Advento"));
     }
 
@@ -149,7 +137,7 @@ class Calendar extends StatelessWidget {
     );
   }
 
-  static Widget _Icon(BuildContext context, String day, bool active) {
+  static Widget _icon(BuildContext context, String day, bool active) {
     return Container(
         decoration: BoxDecoration(
           color: Theme.of(context).accentColor,

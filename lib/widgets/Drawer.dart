@@ -1,5 +1,3 @@
-import 'package:colgaia_convento/screens/CreditsScreen.dart';
-import 'package:colgaia_convento/screens/InfoScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -14,67 +12,26 @@ class DrawerWidget extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-               
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListTile(
-                    title: Text("Velas"),
-                    trailing: Icon(
-                      MaterialCommunityIcons.candle,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    onTap: () => Navigator.of(context).popAndPushNamed('candle'),
-                  ),
-                ),
+                _tab(context, "Velas", MaterialCommunityIcons.candle, "candle"),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                   child: Divider(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListTile(
-                    title: Text("Ajuda"),
-                    trailing: Icon(
-                      Icons.help,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    onTap: () => Navigator.of(context).popAndPushNamed('help'),
-                  ),
-                ),
+                _tab(context, "Ajuda", Icons.help, "help"),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                   child: Divider(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListTile(
-                    title: Text("Sobre a app"),
-                    trailing: Icon(
-                      Icons.info,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    onTap: () => Navigator.of(context).popAndPushNamed('info'),
-                  ),
-                ),
+                _tab(context, "Sobre a aplicação", Icons.info, "info"),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                   child: Divider(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListTile(
-                    title: Text("Créditos"),
-                    trailing: Icon(
-                      Icons.people,
-                      color: Theme.of(context).accentColor,
-                    ),
-                    onTap: () => Navigator.of(context).popAndPushNamed('credits'),
-                  ),
-                ),
+                _tab(context, "Créditos", Icons.people, "credits"),
               ],
             ),
           ),
-          // ? In case you're wondering, we created this container to
+          // ? In case you're wondering, we've created this container to
           // ? put the version in the bottom left
           Container(
             // This align moves the children to the bottom
@@ -97,6 +54,21 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _tab(
+      BuildContext context, String title, IconData iconData, String route) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: ListTile(
+        title: Text(title),
+        trailing: Icon(
+          iconData,
+          color: Theme.of(context).accentColor,
+        ),
+        onTap: () => Navigator.of(context).popAndPushNamed(route),
       ),
     );
   }
