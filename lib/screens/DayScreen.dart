@@ -103,7 +103,6 @@ class _DayScreenState extends State<DayScreen> {
                                   Colors.black.withOpacity(0.4),
                                   BlendMode.luminosity))),
                     ),
-                    
                   ),
                 ),
                 SliverList(
@@ -134,7 +133,7 @@ class _DayScreenState extends State<DayScreen> {
                         ),
                       ),
                     ),
-                    buildTitle(context, "Refleção"),
+                    buildTitle(context, "Reflexão"),
                     buildParagraph(day.reflection),
                     buildTitle(context, "Oração"),
                     buildParagraph(day.pray),
