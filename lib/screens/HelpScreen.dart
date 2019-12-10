@@ -1,5 +1,5 @@
-import 'package:colgaia_convento/local/pt.dart';
-import 'package:colgaia_convento/widgets/Typography.dart';
+import 'package:advento/local/pt.dart';
+import 'package:advento/widgets/Typography.dart';
 import 'package:flutter/material.dart';
 
 class HelpScreen extends StatelessWidget {

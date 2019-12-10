@@ -1,11 +1,11 @@
-import 'package:colgaia_convento/screens/CandleScreen.dart';
-import 'package:colgaia_convento/screens/CreditsScreen.dart';
-import 'package:colgaia_convento/screens/DayScreen.dart';
-import 'package:colgaia_convento/screens/HandleStateScreen.dart';
-import 'package:colgaia_convento/screens/HelpScreen.dart';
-import 'package:colgaia_convento/screens/HomeScreen.dart';
-import 'package:colgaia_convento/screens/InfoScreen.dart';
-import 'package:colgaia_convento/screens/SplashScreen.dart';
+import 'package:advento/screens/CandleScreen.dart';
+import 'package:advento/screens/CreditsScreen.dart';
+import 'package:advento/screens/DayScreen.dart';
+import 'package:advento/screens/HandleStateScreen.dart';
+import 'package:advento/screens/HelpScreen.dart';
+import 'package:advento/screens/HomeScreen.dart';
+import 'package:advento/screens/InfoScreen.dart';
+import 'package:advento/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 

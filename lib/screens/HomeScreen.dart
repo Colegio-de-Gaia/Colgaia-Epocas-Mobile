@@ -1,7 +1,7 @@
-import 'package:colgaia_convento/models/DayModel.dart';
-import 'package:colgaia_convento/models/OccasionModel.dart';
-import 'package:colgaia_convento/screens/SplashScreen.dart';
-import 'package:colgaia_convento/widgets/Drawer.dart';
+import 'package:advento/models/DayModel.dart';
+import 'package:advento/models/OccasionModel.dart';
+import 'package:advento/screens/SplashScreen.dart';
+import 'package:advento/widgets/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';

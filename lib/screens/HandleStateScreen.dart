@@ -1,7 +1,7 @@
-import 'package:colgaia_convento/models/OccasionModel.dart';
-import 'package:colgaia_convento/screens/HomeScreen.dart';
-import 'package:colgaia_convento/screens/SplashScreen.dart';
-import 'package:colgaia_convento/services/domain/OccasionDomain.dart';
+import 'package:advento/models/OccasionModel.dart';
+import 'package:advento/screens/HomeScreen.dart';
+import 'package:advento/screens/SplashScreen.dart';
+import 'package:advento/services/domain/OccasionDomain.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
