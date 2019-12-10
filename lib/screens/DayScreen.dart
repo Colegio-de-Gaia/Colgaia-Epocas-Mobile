@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:colgaia_convento/models/DayModel.dart';
-import 'package:colgaia_convento/services/domain/domain.dart';
-import 'package:colgaia_convento/widgets/Typography.dart';
+import 'package:advento/models/DayModel.dart';
+import 'package:advento/services/domain/domain.dart';
+import 'package:advento/widgets/Typography.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';

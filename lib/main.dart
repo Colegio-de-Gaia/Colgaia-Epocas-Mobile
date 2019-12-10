@@ -1,5 +1,5 @@
-import 'package:colgaia_convento/routes.dart';
-import 'package:colgaia_convento/theme.dart';
+import 'package:advento/routes.dart';
+import 'package:advento/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {

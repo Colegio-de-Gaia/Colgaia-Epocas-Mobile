@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:colgaia_convento/models/OccasionModel.dart';
-import 'package:colgaia_convento/services/domain/domain.dart';
+import 'package:advento/models/OccasionModel.dart';
+import 'package:advento/models/OccasionModel.dart';
+import 'package:advento/services/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
