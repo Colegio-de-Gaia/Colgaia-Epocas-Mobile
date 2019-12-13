@@ -1,19 +1,18 @@
-# Colgaia Advento
+# COLGAIA ÉPOCAS 🕯️ - [DOWNLOAD](#download)
 
-## Download
-http://bit.ly/2E3gkuq
+![Easter Egg](https://i.imgur.com/j5lDxIS.jpg)
 
-A new Flutter project.
+# Download
 
-## Getting Started
+Pode fazer download da app scanneando o código QR ou então através deste link: http://bit.ly/2E3gkuq
 
-This project is a starting point for a Flutter application.
+# Contexto da app
 
-A few resources to get you started if this is your first Flutter project:
+Esta aplicação foi-nos pedida pelo Colégio de Gaia, escola onde estudamos, com o intuito de juntar tecnologia à religião.
+Queremos deixar claro que ao fazer isto não necessariamente apoiamos a religião cristã, apenas fizemos o trabalho que nos foi pedido.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Como usar
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A app tem uma parte principal: um calendário onde é possível clicar nos seus dias e receber a sua respectiva mensagem, reflexão e oração, assim  como ver um desenho ilustrado por alunos do 2º e 3º ciclo e alunos do 10º ano da escola.
+Pode ainda ver as 4 velas do advento ao clicar no menu que se encontra no canto superior direito na tela do caléndário.
+Para obter um contexto da época atual pode ir a esse mesmo menu e procurar por "Sobre a app" ou então "Ajuda", para uma ajuda mais completa.
