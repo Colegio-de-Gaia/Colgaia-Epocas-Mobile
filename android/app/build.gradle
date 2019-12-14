@@ -49,9 +49,9 @@ android {
     signingConfigs {
         release {
             keyAlias 'key'
-            keyPassword 'naovaisvais'
+            keyPassword 'edit'
             storeFile file("/Users/vascomartins/key.jks")
-            storePassword 'naovaisvais'
+            storePassword edit
         }
     }
     buildTypes {
