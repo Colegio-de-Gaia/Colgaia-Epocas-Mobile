@@ -44,7 +44,7 @@ class DrawerWidget extends StatelessWidget {
                   children: <Widget>[
                     ListTile(
                       title: Text(
-                        'Versão 1.0',
+                        'Versão 2.0.4',
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
