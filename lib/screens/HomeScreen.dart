@@ -92,7 +92,7 @@ class Calendar extends StatelessWidget {
           new Event(
               date: date,
               dot: _icon(context, date.day.toString(), true),
-              title: "Advento"));
+              title: "Quaresma"));
     }
 
     for (DateTime date in _notActive) {
@@ -101,7 +101,7 @@ class Calendar extends StatelessWidget {
           new Event(
               date: date,
               icon: _icon(context, date.day.toString(), true),
-              title: "Advento"));
+              title: "Quaresma"));
     }
 
     return CalendarCarousel<Event>(

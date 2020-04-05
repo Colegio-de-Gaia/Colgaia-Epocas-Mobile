@@ -44,7 +44,7 @@ class SplashScreen extends StatelessWidget {
               // ? and at the same time we had the padding
               padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
               child: Image(
-                image: AssetImage('assets/images/logoConvento.png'),
+                image: AssetImage('assets/images/quaresma.png'),
               ),
             ),
             error

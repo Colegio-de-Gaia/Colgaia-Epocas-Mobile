@@ -31,7 +31,7 @@ class _DayScreenState extends State<DayScreen> {
   }
 
   Future<Day> getDay() async {
-    var url = BASE_URL + "/api/days/" + this.id;
+    var url = BASE_URL + "api/v1/days/" + this.id;
 
     Response response =
         await http.get(url, headers: {"Accept": "application/json"});

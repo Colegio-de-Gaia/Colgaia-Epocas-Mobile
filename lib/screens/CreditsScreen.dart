@@ -58,7 +58,7 @@ class CreditsScreen extends StatelessWidget {
                 child: Align(
                   alignment: FractionalOffset.bottomCenter,
                   child: Text(
-                    "Copyright (c) SE3ME Solutions 2019\nColégio de Gaia",
+                    "Copyright (c) Menso Software 2020\nColégio de Gaia",
                     style: TextStyle(
                         fontSize: 10.0,
                         fontWeight: FontWeight.w400,

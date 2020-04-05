@@ -12,11 +12,13 @@ class DrawerWidget extends StatelessWidget {
           Expanded(
             child: ListView(
               children: <Widget>[
-                _tab(context, "Velas", MaterialCommunityIcons.candle, "candle"),
+                // ? We're removing this 'cause this tab was exclusive
+                // ? for the last epoch ("Advento") and we didn't know
+                /* _tab(context, "Velas", MaterialCommunityIcons.candle, "candle"),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                   child: Divider(),
-                ),
+                ),*/
                 _tab(context, "Ajuda", Icons.help, "help"),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
@@ -44,7 +46,7 @@ class DrawerWidget extends StatelessWidget {
                   children: <Widget>[
                     ListTile(
                       title: Text(
-                        'Versão 2.0.4',
+                        'Versão 2.0.5',
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),

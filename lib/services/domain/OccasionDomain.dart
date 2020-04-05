@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 class OccasionRepository {
   Future<Occasion> getCurrentOccasion() async {
-    var url = BASE_URL + "/api/current/occasion";
+    var url = BASE_URL + "api/v1/epochs/current";
     Response response;
 
     response = await http.get(url, headers: {"Accept": "application/json"});
@@ -47,11 +47,11 @@ class OccasionRepository {
     }
 
     for (DateTime date in _active) {
-      _eventList.add(date, Event(date: date, icon: icon, title: "Advento"));
+      _eventList.add(date, Event(date: date, icon: icon, title: "Quaresma"));
     }
 
     for (DateTime date in _notActive) {
-      _eventList.add(date, Event(date: date, icon: icon, title: "Advento"));
+      _eventList.add(date, Event(date: date, icon: icon, title: "Quaresma"));
     }
     return _eventList;
   }
